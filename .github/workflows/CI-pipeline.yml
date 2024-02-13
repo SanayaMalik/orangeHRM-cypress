@@ -1,1 +1,22 @@
+name: Add Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Cypress-Test:
+    runs-on: windows-latest  # Change runs-on to windows-latest for Windows environment
+    steps:
+      - name: Checkout GitCode
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Cypress Tests
+        run: npm test
 
