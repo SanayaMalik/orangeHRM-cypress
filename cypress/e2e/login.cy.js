@@ -1,26 +1,42 @@
-
+const { beforeEach } = require("mocha");
 
 describe('template spec', () => {
-  it('login',()=>{
-    cy.LoginSite("Admin","admin123");
+  beforeEach(()=>{
+    cy.LoginSite();
   })
-  /*
-  it('empty_credential', ()=>{
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-    cy.get('.orangehrm-login-branding').should('be.visible');
-    cy.get('input[placeholder="Username"]')
-    cy.get('input[placeholder="Password"]')
-    cy.get('button[type="submit"]').click()
-    cy.get('div').contains(/required/i);
 
-  })
-  it('invalid_credentals',()=>{
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-    cy.get('.orangehrm-login-branding').should('be.visible');
-    cy.get('input[placeholder="Username"]').type('xyz')
-    cy.get('input[placeholder="Password"]').type('xyz')
-    cy.get('button[type="submit"]').click()
-    cy.get('p').contains(/invalid credentials/i);
-  })
-  */
-})
+  it('Should navigate to the dashboard and perform dashboard tests', () => {
+    cy.LoginSite(cypress.env('username'), cypress.env('password'));
+
+    // const functionalities = [
+    //   'Time at Work',
+    //   'My Actions',
+    //   'Quick Launch',
+    //   'Buzz Latest Posts',
+    //   'Employees on Leave Today',
+    //   'Employee Distribution by Sub Unit',
+    //   'Employee Distribution by Location'
+    // ];
+
+    
+    // cy.get('.oxd-grid-item.oxd-grid-item--gutters.orangehrm-dashboard-widget')
+      // .each(($div, index) => {
+      //   cy.wrap($div).within(() => {
+      //     cy.contains('.oxd-text.oxd-text--p', new RegExp(functionalities[index])).should('be.visible');
+      //   });
+      // });
+
+      it('dsfhsd',(()=>{
+        //reached the dah and validated for the 7 tiles
+        cy.get('.oxd-grid-item.oxd-grid-item--gutters.orangehrm-dashboard-widget').then(($ele)=>{
+          expect($ele.Text()).include("Time at Work").and.include("My Actions").and.include("Quick Launch").and.include("Buzz Latest Posts").and.include("Employees on Leave Today").and.include("Employee Distribution by Sub Unit").and.include("Employee Distribution by Location")
+        })
+        cy.get('.oxd-main-menu-item').should('have.class', 'active');
+
+
+      })
+      
+      )
+    
+  });
+});

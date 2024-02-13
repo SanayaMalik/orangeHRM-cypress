@@ -1,5 +1,14 @@
 {
   "dependencies": {
     "cypress": "^13.6.3"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.1",
+    "cypress-xpath": "^2.0.1",
+    "mocha": "^10.2.0"
+  },
+  "scripts":{
+    "html-report": "cypress run --spec <file-path>.js --browser chrome --headed"
   }
+  
 }
